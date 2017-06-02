@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html>
+
+
+<title>
+Document
+</title>
+<style type="text/css">
+  *{margin:0px;padding:0px;}
+  .qq{width:173px;height:167px;background:url("image/1.jpg");position:fixed;right:-90px;top:200px;}
+  .chat{width:220px;height:240px;background:url("image/3.jpg");position:fixed;right:-0px;top:200px;padding-top:90px;padding-left:20px;}
+body{background:url("image/n.gif");height:2000px;}
+a{color:#0066ff;text-decoration:none;/*去掉下划线*/front-size:15px;display:block;margin-bottom:10px;}
+a img{margin-left:10px;}
+
+</style>
+<body>
+   <div class="qq"> </div>
+   <div class="chat">
+       <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes">技术支持：<image src="image/5.jpg" align="absmiddle"/></a>
+<a href="http://wpa.qq.com/pa?p=2::52">客服一号：<image src="image/5.jpg" align="absmiddle"/></a>
+<a href="http://www.baidu.com">客服二号：<image src="image/5.jpg" align="absmiddle"/></a>
+<a href="http://www.baidu.com">客服三号：<image src="image/5.jpg" align="absmiddle"/></a>
+<a href="http://www.baidu.com">问题解答：<image src="image/5.jpg" align="absmiddle"/></a>
+   </div>
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript">
+      alert{"VIP 报名QQ：2251282582"};
+     $(".qq").hover(function(){
+       alert("你滑动到我上面了");
+
+     $(this).animate({right:"-173px"},500,function{}{
+       alert("我等QQ移动进去我再做操作");
+
+});
+     $(".chat").animate({right:"0px"},500)
+})
+
+     $(".chat").hover(function(){
+
+       alert("鼠标滑动到chat上了");
+}，function（）{
+   alert("鼠标离开chat了");
+}
+
+
+)
+   </script>
+   
+</body>
+</html>
