@@ -1,0 +1,143 @@
+
+<html>
+   <head>
+     
+     <title>一号店轮播特效</title>
+     <meta name="keywords" content="关键词1，关键词2">
+
+     <style>/*css样式表的盒子*/
+      *{/*通用选择器：选择到所有的标签*/
+      margin:0px/*外边距*/;padding:0px;/*内边距*/
+
+}
+      #box{/*id选择器*/
+      width:180px;height:180px;
+     /* background:red;*/
+      margin:100px auto;
+      overflow:hidden;/*超出隐藏*/
+      position:relative;
+      cursor:pointer;/*鼠标移动上去为手形*/
+      }
+
+     ul.img{
+
+        width:540px;position:relative;//"相对定位"
+        left:0px;top:0px;
+
+        }
+
+
+      ul.img li{
+
+       list-style:none;/*清除小圆点*/
+       width:180px;height:180px;/*background:blue;*/
+       float:left;
+      }
+      ul.icon{
+        /*设置位置*/   
+        position:absolute;/*绝对定位*/
+        left:40px;bottom:25px;
+        
+      }
+      ul.icon li{
+
+        list-style:none;/*清除小圆点*/
+ width:30px;height:4px;background:#a1a1a1;
+        float:left;/*水平浮动*/
+margin-left:5px;
+}
+      ul.icon li div{
+
+      height:10px;background:#f00;width:0px;
+      }
+     </style>
+   </head>
+   <body>
+   
+      <div id="box"><!--id唯一性，div盒子模型标签有宽高度-->
+          <ul class="img">
+              <li><img src="images/1.jpg"></li>
+              <li><img src="images/2.jpg"></li>
+              <li><img src="images/3.jpg"></li>
+          </ul>
+          <ul class="icon">
+              <li><div></div></li>
+              <li><div></div></li>
+              <li><div></div></li>
+          </ul>
+      </div>
+      <script src="js/jquery-1.12.1.js"></script>
+      <script>
+       // alert($);
+       var n=0;
+       $("ul.icon li").hover(function(){
+       //鼠标滑上去实现什么效果
+       $(this).css({
+          "height":"10px",
+          "margin-top":"-3px"
+
+
+}).siblings().css({
+"height":"4px",
+"margin-top":"0px"
+});//鼠标滑动到那个就代表那个
+
+       n=$(this).index(); //获取鼠标滑上去元素的序列号   
+       // 红色背景进度条
+       //找到他下面的div子元素
+       $(this).find("div").css("width","30px").parent().siblings().find("div").stop().css("width","0px");//stop为停止动画
+$("ul.img").animate({
+
+  "left":-n*180+"px"
+},500);
+
+
+
+});
+n+=1;
+
+$("#box").hover(function(){//鼠标一进来时清除
+
+clearInterval(time);//清除定时器
+$("ul.icon li").eq(n-1).find("div").stop().css("width","30px");
+
+},function(){//鼠标一开调用
+   //setInterval(auto,2500);
+   $("ul.icon li").eq(n-1).find("div").stop().css("width","0px")
+n-=1;
+auto();
+time=setInterval(auto,2500);
+});
+
+  function auto(){
+$("ul.icon li").eq(n).css({
+
+        "height":"10px",
+        "margin-top":"-3px"
+
+      }).siblings().css({
+        "height":"4px",
+        "margin-top":"0px"
+      });
+      $("ul.icon li").eq(n).find("div").animate({
+"width":"30px"
+
+
+},2000,function(){
+
+$(this).css("width","0px");
+$("ul.img").animate({
+
+"left":-n*180+"px"
+},500);
+
+});
+      n++;
+       if(n>2)
+         n=0;
+}
+  var time=setInterval(auto,2500);
+
+      </script>
+   </body>
+<html/>
